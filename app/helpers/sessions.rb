@@ -9,12 +9,12 @@ helpers do
   def login
     user = User.where(email: params[:email]).first
     if user && user.password == params[:password]
-      sessions[:id] = params[:id]
+      sessions[:user_id] = params[:user_id]
     end
   end
 
   def logout
-    sessions[:id] = nil
+    sessions[:user_id] = nil
   end
 
 end
