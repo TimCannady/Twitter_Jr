@@ -20,7 +20,7 @@ post '/users/:id/tweets' do
   p params
   p '#' * 50
   @user = User.find_by(id: params[:id])
-  @tweet = Tweet.new(content: params[:content], user_id: params[:id])
+  @tweet = Tweet.new(content: params[:content], user_id: session[:user_id])
   if @tweet.save
     # p 'this saved!'
     redirect "/users/#{@user.id}/tweets"
