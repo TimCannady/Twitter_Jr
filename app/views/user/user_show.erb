@@ -1,5 +1,4 @@
 <section id="user-info-container">
-
   <h5><%= current_user.first_name + ' ' + current_user.last_name%> </h5>
   <h6><%= current_user.username %></h6>
 
@@ -20,7 +19,7 @@
   <a href="/users/<%= session[:user_id] %>/followers">
     <div>
        <p>Followers</p>
-       <%= current_user.leaders.count %>
+
     </div>
   </a>
 
@@ -51,16 +50,17 @@
 
 <section id="tweet-container">
   <ul>
-    <% @user_and_following_tweets.flatten.each do |tweet| %>
+    <% @user_and_following_tweets.each do |tweet| %>
 
       <% author_id = tweet.user_id %>
       <% user_of_tweet = User.find(author_id) %>
       <% author_of_tweet = user_of_tweet.first_name + ' ' +user_of_tweet.last_name %>
       <li>
-
+          <!-- username -->
           <a href="/users/<%= tweet.user_id %>">
           <%= user_of_tweet.username %></a>
 
+          <!-- user's full name -->
           <b><em><%= author_of_tweet %></em></b>
       </li>
       <br />
@@ -68,8 +68,11 @@
 
         <% if session[:user_id] == tweet.user_id %>
 
-
+          <!-- Delete tweet -->
           <a href="/users/<%= author_id %>/tweets/<%= tweet.id %>" style="margin-left: 70px">delete</a>
+
+
+          <a href="/users/<%= author_id %>/tweets/<%= tweet.id %>" style="margin-left: 60px">Delete</a>
 
         <% end %>
       <br />
