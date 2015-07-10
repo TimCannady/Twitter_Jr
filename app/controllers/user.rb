@@ -22,24 +22,6 @@ end
 
 
 get '/users/:id' do
-  # This shows the profile of a user
-  if session[:user_id]
-    erb :'user/user_show'
-  else
-    redirect '/'
-  end
-
-end
-
-get '/users/:id/followers' do
-
-end
-
-get '/users/:id/following' do
-
-end
-
-get '/home' do
   if session[:user_id]
     @users_tweets = current_user.tweets
 # We are not sure if the list of tweets will properly display all
@@ -51,10 +33,22 @@ get '/home' do
     end
 
     @user_and_following_tweets = users_following_tweets + @users_tweets
-    erb :home
+   erb :'user/user_show'
   else
     redirect '/'
   end
+end
+
+get '/users/:id/followers' do
+
+end
+
+get '/users/:id/following' do
+
+end
+
+get '/home' do
+
 end
 
 post '/search' do
