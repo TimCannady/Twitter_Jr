@@ -45,3 +45,8 @@ end
 delete '/users/:id/tweets/:tweets_id' do
   'destroys the tweed in the database'
 end
+
+get '/tweets' do
+  @tweets = Tweet.all
+  erb :'tweet/tweets'
+end
