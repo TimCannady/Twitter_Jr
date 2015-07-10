@@ -22,12 +22,10 @@ end
 
 get '/users/:id' do
 
+  @current_profile_id = params[:id].to_i
   # This shows the profile of a user
   if session[:user_id]
-    erb :'user/user_show'
-
     if session[:user_id] == params[:id].to_i
-
       @users_tweets = current_user.tweets
       users_following = current_user.leaders
       users_following_tweets = []
@@ -35,14 +33,22 @@ get '/users/:id' do
       users_following.each do |user|
         users_following_tweets << user.tweets
       end
-
       @user_and_following_tweets = users_following_tweets + @users_tweets
-     erb :'user/user_show'
-
+      erb :'user/user_show'
     else
       redirect '/'
     end
   end
+end
+
+delete '/users/:id' do
+  UserRelationship.destroy(minion_id: params[:id])
+  redirect '/users/#{params[:id]}'
+end
+
+post '/users/:id' do
+  UserRelationship.create!(leader_id: params[:id], minion_id: current_user.id)
+  redirect '/users/#{params[:id]}'
 end
 
 get '/users/:id/followers' do

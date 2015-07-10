@@ -1,4 +1,5 @@
 <section id="user-info-container">
+
   <h5><%= current_user.first_name + ' ' + current_user.last_name%> </h5>
   <h6><%= current_user.username %></h6>
 
@@ -23,21 +24,41 @@
     </div>
   </a>
 
+
+  <% if session[:user_id] != @current_profile_id %>
+
+   <%  we_are_following = (UserRelationship.find_by(minion_id: session[:user_id]).leader_id == @current_profile_id) %>
+
+    <% if we_are_following %>
+
+      <form action="/users/#{@current_profile_id}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Unfollow">
+      </form>
+    <% else %>
+
+      <form action="/users/#{@current_profile_id}" method="post">
+        <input type="submit" value="Follow">
+      </form>
+    <% end %>
+
+  <% end %>
+
+
 </section>
 
 <section id="tweet-container">
   <ul>
-    <% @user_and_following_tweets.each do |tweet| %>
+    <% @user_and_following_tweets.flatten.each do |tweet| %>
 
       <% author_id = tweet.user_id %>
       <% user_of_tweet = User.find(author_id) %>
       <% author_of_tweet = user_of_tweet.first_name + ' ' +user_of_tweet.last_name %>
       <li>
-          <!-- username -->
+
           <a href="/users/<%= tweet.user_id %>">
           <%= user_of_tweet.username %></a>
 
-          <!-- user's full name -->
           <b><em><%= author_of_tweet %></em></b>
       </li>
       <br />
@@ -45,7 +66,7 @@
 
         <% if session[:user_id] == tweet.user_id %>
 
-          <!-- Delete tweet -->
+
           <a href="/users/<%= author_id %>/tweets/<%= tweet.id %>" style="margin-left: 70px">delete</a>
 
         <% end %>
