@@ -17,11 +17,12 @@ get '/logout' do
 end
 
 get '/users' do
-  redirect '/home'
+  @users = User.all
+  erb :'user/user_index'
 end
 
 get '/users/:id' do
-
+  p ''
   # This shows the profile of a user
   if session[:user_id]
     erb :'user/user_show'
