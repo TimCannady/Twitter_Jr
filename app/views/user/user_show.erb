@@ -1,6 +1,8 @@
 <section id="user-info-container">
-  <h5><%= current_user.first_name + ' ' + current_user.last_name%> </h5>
-  <h6><%= current_user.username %></h6>
+
+  <% @user_to_display = User.find(@current_profile_id) %>
+  <h5><%= @user_to_display.first_name + ' ' + @user_to_display.last_name%> </h5>
+  <h6><%= @user_to_display.username %></h6>
 
   <a href="/users/<%= session[:user_id] %>/tweets">
     <div>
