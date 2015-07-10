@@ -22,9 +22,7 @@ end
 
 get '/users/:id' do
   if session[:user_id] == params[:id].to_i
-    p session[:user_id]
-    p 'params below'
-    p params[:id]
+
     @users_tweets = current_user.tweets
     users_following = current_user.leaders
     users_following_tweets = []
