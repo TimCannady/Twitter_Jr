@@ -21,20 +21,27 @@ get '/users' do
 end
 
 get '/users/:id' do
-  if session[:user_id] == params[:id].to_i
 
-    @users_tweets = current_user.tweets
-    users_following = current_user.leaders
-    users_following_tweets = []
+  # This shows the profile of a user
+  if session[:user_id]
+    erb :'user/user_show'
 
-    users_following.each do |user|
-      users_following_tweets << user.tweets
+    if session[:user_id] == params[:id].to_i
+
+      @users_tweets = current_user.tweets
+      users_following = current_user.leaders
+      users_following_tweets = []
+
+      users_following.each do |user|
+        users_following_tweets << user.tweets
+      end
+
+      @user_and_following_tweets = users_following_tweets + @users_tweets
+     erb :'user/user_show'
+
+    else
+      redirect '/'
     end
-
-    @user_and_following_tweets = users_following_tweets + @users_tweets
-   erb :'user/user_show'
-  else
-    redirect '/'
   end
 end
 
@@ -47,7 +54,11 @@ get '/users/:id/following' do
 end
 
 get '/home' do
-
+  if session[:user_id]
+    erb :home
+  else
+    redirect '/'
+  end
 end
 
 post '/search' do
