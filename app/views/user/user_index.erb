@@ -1,0 +1,18 @@
+<div class='users_list_container'>
+
+  <h2> Users: </h2>
+
+  <% if @users.empty? == false %>
+    <% @users.each do |user| %>
+      <a href="users/<%= user.id %>" >
+
+        <li> <%= user.username %> : <%= user.email %> </li>
+
+      <a>
+    <% end %>
+  <% else %>
+
+    <p> all Users have been destroyed </p>
+
+  <% end %>
+</div>

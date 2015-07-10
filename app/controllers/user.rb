@@ -17,11 +17,11 @@ get '/logout' do
 end
 
 get '/users' do
-  redirect '/home'
+  @users = User.all
+  erb :'user/user_index'
 end
 
 get '/users/:id' do
-
   @current_profile_id = params[:id].to_i
   # This shows the profile of a user
   if session[:user_id]
