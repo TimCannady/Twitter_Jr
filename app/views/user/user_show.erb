@@ -26,22 +26,24 @@
 
 
   <% if session[:user_id] != @current_profile_id %>
+   <% current_user_page = (UserRelationship.find_by(minion_id: session[:user_id])) %>
+    <% if current_user_page %>
+      <% if current_user_page.leader_id == @current_profile_id %>
 
-   <%  we_are_following = (UserRelationship.find_by(minion_id: session[:user_id]).leader_id == @current_profile_id) %>
-
-    <% if we_are_following %>
-
-      <form action="/users/#{@current_profile_id}" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Unfollow">
-      </form>
+        <form action="/users/<%= @current_profile_id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Unfollow">
+        </form>
+      <% else %>
+        <form action="/users/<%= @current_profile_id %>" method="post">
+          <input type="submit" value="Follow">
+        </form>
+      <% end %>
     <% else %>
-
-      <form action="/users/#{@current_profile_id}" method="post">
+      <form action="/users/<%= @current_profile_id %>" method="post">
         <input type="submit" value="Follow">
       </form>
     <% end %>
-
   <% end %>
 
 
