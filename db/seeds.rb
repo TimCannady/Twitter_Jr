@@ -51,3 +51,8 @@ user1.minions << user3
 
 user2.leaders << user1
 user2.leaders << user3
+#<UserRelationship id: 1, leader_id: 2, minion_id: 3>,
+#<UserRelationship id: 2, leader_id: 1, minion_id: 3>,
+#<UserRelationship id: 3, leader_id: 3, minion_id: 1>,
+#<UserRelationship id: 4, leader_id: 2, minion_id: 1>,
+#<UserRelationship id: 5, leader_id: 2, minion_id: 3>

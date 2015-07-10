@@ -23,11 +23,11 @@ end
 
 get '/users/:id' do
   # This shows the profile of a user
-  # if session[:user_id]
+  if session[:user_id]
   erb :'user/user_show'
-  # else
-  #   redirect '/login'
-  # end
+  else
+    redirect '/login'
+  end
 
 end
 
@@ -40,11 +40,11 @@ get '/users/:id/following' do
 end
 
 get '/home' do
-  # if session[:user_id]
+  if session[:user_id]
     erb :home
-  # else
-  #   redirect '/login'
-  # end
+  else
+    redirect '/login'
+  end
 end
 
 post '/search' do
