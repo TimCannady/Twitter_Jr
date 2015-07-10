@@ -24,9 +24,9 @@ end
 get '/users/:id' do
   # This shows the profile of a user
   if session[:user_id]
-  erb :'user/user_show'
+    erb :'user/user_show'
   else
-    redirect '/login'
+    redirect '/'
   end
 
 end
@@ -43,7 +43,7 @@ get '/home' do
   if session[:user_id]
     erb :home
   else
-    redirect '/login'
+    redirect '/'
   end
 end
 
