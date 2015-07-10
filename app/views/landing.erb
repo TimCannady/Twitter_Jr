@@ -1,41 +1,21 @@
-<br>
-<br>
+<div class="container">
 
-<!-- homepage login -->
-  <form id = "login" action="/login" method="post">Login:
-    <br>
-    <label for="email">Email: </label>
-    <input type="email" name="email" placeholder="yourname@email.com" required>
-    <br>
-    <label for="password">Password: </label>
-    <input type="password" name="password" placeholder="password" required>
-    <input type="submit" value="Login"></li>
-    <br>
-  </form>
-<!-- end homepage login -->
+  <div class="ui fluid two column middle aligned very relaxed stackable grid">
 
-<br>
-<br>
+    <div class="column">
+      <h3> Get to buzzing  </h3>
+      <%= erb :_login %>
 
-<!-- create account -->
-  <form id = "create" action="/users/new" method="post">Create An Account:
-    <br>
-    <label for="username">Username: </label>
-    <input type="text" name="username" placeholder="@timcannady" required>
-    <br>
-    <label for="first_name">First Name: </label>
-    <input type="text" name="first_name" placeholder="Tim" required>
-    <br>
-    <label for="last_name">Last Name: </label>
-    <input type="text" name="last_name" placeholder="Cannady" required>
-    <br>
-    <label for="email">Email: </label>
-    <input type="email" name="email" placeholder="yourname@email.com" required>
-    <br>
-    <label for="password">Password: </label>
-    <input type="password" name="password" placeholder="password" required>
-    <input type="submit" value="Create Account"></li>
-    <br>
-  </form>
-<!-- end create account -->
+    </div>
 
+    <div class="ui vertical divider">
+      Or
+    </div>
+
+    <div class="column">
+      <h3> Join the bzz bzz </h3>
+      <%= erb :_signup %>
+    </div>
+
+  </div>
+</div>

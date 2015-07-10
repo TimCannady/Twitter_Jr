@@ -49,4 +49,6 @@ end
 ############################# delete ###########
 delete '/users/:id/tweets/:tweets_id' do
   'destroys the tweed in the database'
+  tweet = Tweet.where(id: params[:tweets_id]).first
+  tweet.destroy
 end
