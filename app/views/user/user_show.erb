@@ -1,47 +1,49 @@
 <section id="user-info-container">
+
   <h5><%= current_user.first_name + ' ' + current_user.last_name%> </h5>
   <h6><%= current_user.username %></h6>
 
-  <a href="/users/<%= session[:user_id] %>/tweets">
+   <a href="/users/<%= session[:user_id] %>/tweets">
     <div>
         <p>Tweets</p>
-        <%= @users_tweets.count %>
+        <%= #@users_tweets.count %>
     </div>
   </a>
 
   <a href="/users/<%= session[:user_id] %>/following">
     <div>
        <p>Following</p>
-       <%= current_user.minions.count %>
+       <%= #current_user.minions.count %>
     </div>
   </a>
 
   <a href="/users/<%= session[:user_id] %>/followers">
     <div>
        <p>Followers</p>
-       <%= current_user.leaders.count %>
+       <%= #current_user.leaders.count %>
     </div>
   </a>
 
-  <!-- Follow / Unfollow toggle link -->
-  <%
-  # Is the user is not on their own page?  display the follow/unfollow button
-  if session[:user_id] != @current_profile_id
-    we_are_following = UserRelationship.find_by(minion_id: session[:user_id]).leader_id == @current_profile_id
-    if we_are_following
-    # Already following the user on the profile page, link says 'Unfollow'
+
+  <% if session[:user_id] != @current_profile_id %>
+
+   <%  we_are_following = (UserRelationship.find_by(minion_id: session[:user_id]).leader_id == @current_profile_id) %>
+
+    <% if we_are_following %>
+
       <form action="/users/#{@current_profile_id}" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Unfollow">
       </form>
-    else
-    # Not yet following the uers on this profile page, link says 'Follow'
+    <% else %>
+
       <form action="/users/#{@current_profile_id}" method="post">
         <input type="submit" value="Follow">
       </form>
-    end
-  end
-  %>
+    <% end %>
+
+  <% end %>
+
 
 </section>
 
@@ -53,11 +55,10 @@
       <% user_of_tweet = User.find(author_id) %>
       <% author_of_tweet = user_of_tweet.first_name + ' ' +user_of_tweet.last_name %>
       <li>
-          <!-- username -->
+
           <a href="/users/<%= tweet.user_id %>">
           <%= user_of_tweet.username %></a>
 
-          <!-- user's full name -->
           <b><em><%= author_of_tweet %></em></b>
       </li>
       <br />
@@ -65,7 +66,7 @@
 
         <% if session[:user_id] == tweet.user_id %>
 
-          <!-- Delete tweet -->
+
           <a href="/users/<%= author_id %>/tweets/<%= tweet.id %>" style="margin-left: 70px">delete</a>
 
         <% end %>
