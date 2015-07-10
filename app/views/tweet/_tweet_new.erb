@@ -1,6 +1,8 @@
-<div class='new_tweet_container' >
-  <form method='post' action="/users/<%= @user.id %>/tweets">
-    <input type='text' name='content' placeholder='your tweet here'>
-    <input type='submit' value='tweet!' >
-  </form>
-</div>
+<% if current_user %>
+  <div class='new_tweet_container' >
+    <form method='post' action="/users/<%= @user.id %>/tweets">
+      <input type='text' name='content' placeholder='your tweet here'>
+      <input type='submit' value='tweet!' >
+    </form>
+  </div>
+<% end %>
