@@ -1,7 +1,7 @@
 user1_value = {
   username: "amj",
   email: "amjacobowitz@gmail.com",
-  password_hash: "1234",
+  password: "1234",
   first_name: "aaron",
   last_name: "j"
 }
@@ -9,7 +9,7 @@ user1_value = {
 user2_value = {
   username: "mer",
   email: "mer0522@gmail.com",
-  password_hash: "5678",
+  password: "5678",
   first_name: "marisa",
   last_name: "ramon"
 }
@@ -17,7 +17,7 @@ user2_value = {
 user3_value = {
   username: "nicoto",
   email: "faintsoundofwater@gmail.com",
-  password_hash: "91011",
+  password: "91011",
   first_name: "nicholas",
   last_name: "toulouse"
 }
@@ -27,17 +27,17 @@ user2 = User.create(user2_value)
 user3 = User.create(user3_value)
 
 tweet1_value = {
-  content: "this is aaron",
+  content: "this is andy",
   user_id: 1
 }
 
 tweet2_value = {
-  content: "this is marissa",
+  content: "this is andrew",
   user_id: 2
 }
 
 tweet3_value = {
-  content: "this is nicholas",
+  content: "this is admiral",
   user_id: 3
 }
 
