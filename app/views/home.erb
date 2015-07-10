@@ -1,6 +1,6 @@
 <br>
 
-<div class="ui grid">
+<div class="ui stackable grid">
   <div class="six wide column">
     <div class="ui center aligned card">
       <div class="image">
@@ -8,7 +8,7 @@
       </div>
       <div class="content">
 
-        <a class="header"> Username </a>
+        <a class="header"> <%= current_user.username %> </a>
 
       </div>
       <div class="extra content">
@@ -17,7 +17,7 @@
           <div class="statistic">
             <div class="value">
 
-              934
+              <%= current_user.leaders.count %>
 
             </div>
             <div class="label">
@@ -31,7 +31,7 @@
             <div class="value">
               <i class="forumbee icon"></i>
 
-              5
+              <%= current_user.leaders.count %>
 
             </div>
             <div class="label">
@@ -53,17 +53,55 @@
         </div>
       </div>
     </div>
+  <%= erb :"tweet/_tweet_new" %>
   </div>
   <div class="ten wide column">
     <div class="ui fluid grid">
-      <div class="six wide column"> <%= erb :"tweet/_tweet_show" %> </div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
-      <div class="six wide column"><%= erb :"tweet/_tweet_show" %></div>
+
+            <div class="six wide column">
+      <% Tweet.all.each do |tweet| %>
+          <a href="#" class="ui card">
+          <div class="extra content">
+            <span class="left floated forumbee">
+              <i class="forumbee yellow icon"></i>
+
+              <p> username </p>
+
+            </span>
+          </div>
+
+          <div class="content">
+            <div class="content">
+
+              <p> <%= tweet.content %> </p>
+
+            </div>
+          </div>
+
+          <div class="ui two bottom attached buttons">
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">
+                <i class="retweet icon"></i>
+              </div>
+
+              <div class="hidden content">Rebuzz</div>
+
+          </div>
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">
+                <i class="star icon"></i>
+              </div>
+
+              <div class="hidden content">Favorite</div>
+
+            </div>
+          </div>
+
+        </a>
+
+        <% end %>
+
+        </div>
     </div>
   </div>
 </div>
