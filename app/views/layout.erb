@@ -2,35 +2,37 @@
 <html lang="en">
 <head>
 
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/semantic.min.css">
+  <link rel="stylesheet" href="/semantic.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+  <script src="/js/semantic.min.js"></script>
+  <link rel="stylesheet" href="/semantic.js">
+  <link rel="stylesheet" href="/semantic.min.js">
+
 
   <title></title>
 </head>
 <body>
-  <header>
-    <div id="header_container_left">
-      <a href="/home">home</a>
-      <a href="/users/<%= session[:user_id] %>">profile</a>
-      <a href="/logout">logout</a>
-    </div>
 
-    <div id="header_container_mid">
-      <h3 id="layout_title">itty bitty twitty</h3>
-    </div>
+<div class="ui secondary menu" style="background:black">
 
-    <div id="header_container_right">
-      <form action='/search' method='post'>
-        <input type='text' placeholder='search for users'>
-        <input type='submit' value='search'>
-      </form>
-    </div>
+  <h2 class="item" style="color:#eaae00">
+    <i class="forumbee yellow icon"></i>    Bzzer </h2>
 
-  </header>
-  <%= yield %>
+</div>
+
+<div class="ui container">
+   <%= yield %>
+</div>
+
 </body>
 </html>
-<%  %>
+
+
+
+
+
+
+

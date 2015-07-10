@@ -21,6 +21,11 @@ get '/users' do
 end
 
 get '/users/:id' do
+
+  # This shows the profile of a user
+  if session[:user_id]
+    erb :'user/user_show'
+
   if session[:user_id] == params[:id].to_i
 
     @users_tweets = current_user.tweets
@@ -33,9 +38,11 @@ get '/users/:id' do
 
     @user_and_following_tweets = users_following_tweets + @users_tweets
    erb :'user/user_show'
+
   else
     redirect '/'
   end
+
 end
 
 get '/users/:id/followers' do
@@ -47,7 +54,11 @@ get '/users/:id/following' do
 end
 
 get '/home' do
-
+  if session[:user_id]
+    erb :home
+  else
+    redirect '/'
+  end
 end
 
 post '/search' do
