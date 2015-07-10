@@ -8,6 +8,6 @@ class UserRelationship < ActiveRecord::Base
   validates :leader, presence: true
 
   # sheep / followee / prey_id
-  validates :stalker, presence: true
+  validates :minion, presence: true
 
 end

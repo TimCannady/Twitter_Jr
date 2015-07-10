@@ -1,4 +1,4 @@
 get '/' do
-  erb :'landing'
+  erb :landing, :layout => false
 end
 
