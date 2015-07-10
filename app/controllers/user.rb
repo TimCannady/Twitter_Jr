@@ -20,14 +20,13 @@ get '/users' do
   redirect '/home'
 end
 
-
 get '/users/:id' do
-  if session[:user_id]
+  if session[:user_id] == params[:id].to_i
+
     @users_tweets = current_user.tweets
-# We are not sure if the list of tweets will properly display all
-# of the following tweets
     users_following = current_user.leaders
     users_following_tweets = []
+
     users_following.each do |user|
       users_following_tweets << user.tweets
     end
