@@ -1,0 +1,26 @@
+#header_container_left {
+  display: inline-block;
+  width: 30%;
+  position: absolute;
+  left: 20px;
+}
+
+#header_container_mid {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
+#header_container_right {
+  display: inline-block;
+  width: 25%;
+  position: absolute;
+  right: 20px;
+}
+
+header {
+  top: 10px;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
