@@ -5,7 +5,6 @@ get '/users/:id/tweets' do
   @tweets = Tweet.all
 end
 
-
 ############################# new ###########
 get '/users/:id/tweets/new' do
   # 'renders the create new form'
@@ -28,12 +27,10 @@ post '/users/:id/tweets' do
   end
 end
 
-
 ############################# show ###########
 get '/users/:id/tweets/:tweets_id' do
   'shows a specific tweet'
 end
-
 
 ############################# edit ###########
 get '/users/:id/tweets/:tweets_id/edit' do
@@ -43,7 +40,6 @@ end
 put '/users/:id/tweets/:tweets_id' do
   'updates the database with the revised information'
 end
-
 
 ############################# delete ###########
 delete '/users/:id/tweets/:tweets_id' do
