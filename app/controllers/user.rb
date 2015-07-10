@@ -11,9 +11,9 @@ post '/login' do
   redirect "/home"
 end
 
-# post or get?
-post '/logout' do
+get '/logout' do
   logout
+  redirect "/"
 end
 
 get '/users' do
