@@ -41,6 +41,8 @@ end
 
 get '/home' do
   if session[:user_id]
+    @users_tweets = current_user.tweets
+    # @users_following_tweets =
     erb :home
   else
     redirect '/'
