@@ -23,6 +23,26 @@
     </div>
   </a>
 
+  <!-- Follow / Unfollow toggle link -->
+  <%
+  # Is the user is not on their own page?  display the follow/unfollow button
+  if session[:user_id] != @current_profile_id
+    we_are_following = UserRelationship.find_by(minion_id: session[:user_id]).leader_id == @current_profile_id
+    if we_are_following
+    # Already following the user on the profile page, link says 'Unfollow'
+      <form action="/users/#{@current_profile_id}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Unfollow">
+      </form>
+    else
+    # Not yet following the uers on this profile page, link says 'Follow'
+      <form action="/users/#{@current_profile_id}" method="post">
+        <input type="submit" value="Follow">
+      </form>
+    end
+  end
+  %>
+
 </section>
 
 <section id="tweet-container">

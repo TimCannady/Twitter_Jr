@@ -22,6 +22,7 @@ end
 
 get '/users/:id' do
 
+  @current_profile_id = params[:id].to_i
   # This shows the profile of a user
   if session[:user_id]
     erb :'user/user_show'
@@ -43,6 +44,16 @@ get '/users/:id' do
       redirect '/'
     end
   end
+end
+
+delete '/users/:id' do
+  UserRelationship.destroy(minion_id: params[:id])
+  redirect '/users/#{params[:id]}'
+end
+
+post '/users/:id' do
+  UserRelationship.create!(leader_id: params[:id], minion_id: current_user.id)
+  redirect '/users/#{params[:id]}'
 end
 
 get '/users/:id/followers' do
