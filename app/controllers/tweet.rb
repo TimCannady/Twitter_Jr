@@ -6,12 +6,15 @@ end
 
 ############################# new ###########
 get '/users/:id/tweets/new' do
-  'renders the create new form'
-  erb :"tweet/_tweet_new.erb"
+  # 'renders the create new form'
+  @user = User.new
+  erb :"tweet/_tweet_new"
 end
 ############################# create
 post '/users/:id/tweets' do
-  'creates the tweet and saves to the database'
+  # 'creates the tweet and saves to the database'
+  @tweet = Tweet.new(content: params[:content])
+
 end
 
 

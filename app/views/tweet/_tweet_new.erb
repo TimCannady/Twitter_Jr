@@ -1,5 +1,5 @@
 <div class='tweet_container' >
-  <form method='post' action="/users/<%=#{@user.id}%>/tweets">
+  <form method='post' action="/users/<%= @user.id %>/tweets">
     <input type='text' name='content' placeholder='your tweet here'>
     <input type='submit' value='tweet!' >
   </form>
