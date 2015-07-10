@@ -32,15 +32,24 @@
       <% author_id = tweet.user_id %>
       <% user_of_tweet = User.find(author_id) %>
       <% author_of_tweet = user_of_tweet.first_name + ' ' +user_of_tweet.last_name %>
-
       <li>
+          <!-- username -->
           <a href="/users/<%= tweet.user_id %>">
           <%= user_of_tweet.username %></a>
-          <b><em><%= author_of_tweet %></em></b>
 
+          <!-- user's full name -->
+          <b><em><%= author_of_tweet %></em></b>
       </li>
       <br />
       <%= tweet.content %>
+
+        <% if session[:user_id] == tweet.user_id %>
+
+          <!-- Delete tweet -->
+          <a href="/users/<%= author_id %>/tweets/<%= tweet.id %>" style="margin-left: 70px">delete</a>
+
+        <% end %>
+      <br />
     <% end %>
   </ul>
 </section>
