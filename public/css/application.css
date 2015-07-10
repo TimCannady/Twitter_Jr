@@ -24,3 +24,53 @@ header {
   position: relative;
   width: 100%;
 }
+
+section {
+  top: 20px;
+  background-color: ;
+  border: dashed black 2px;
+}
+
+#tweet-container{
+  min-width: 45%;
+  min-height: 500px;
+  position: relative;
+  float: right;
+  right: 5%;
+}
+
+#user-info-container{
+  min-width: 30%;
+  height: 250px;
+  position: relative;
+  float: left;
+  left: 5%;
+}
+
+#user-info-container h5{
+  margin-left: 20px;
+}
+
+#user-info-container h6{
+  margin-left: 20px;
+}
+
+
+#user-info-container div{
+  border: solid black 1px;
+  width: 30%;
+  margin: 0px 4px;
+  padding-left: 2px;
+  text-align: center;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
