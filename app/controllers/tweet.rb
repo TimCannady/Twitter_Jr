@@ -29,7 +29,8 @@ end
 
 ############################# show ###########
 get '/users/:id/tweets/:tweets_id' do
-  'shows a specific tweet'
+  Tweet.find_by(id: params[:tweets_id]).destroy
+  redirect "/users/#{params[:id]}"
 end
 
 ############################# edit ###########
@@ -41,7 +42,3 @@ put '/users/:id/tweets/:tweets_id' do
   'updates the database with the revised information'
 end
 
-############################# delete ###########
-delete '/users/:id/tweets/:tweets_id' do
-  'destroys the tweed in the database'
-end
