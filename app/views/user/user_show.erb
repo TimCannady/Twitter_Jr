@@ -28,8 +28,19 @@
 <section id="tweet-container">
   <ul>
     <% @user_and_following_tweets.each do |tweet| %>
-      <li><%= tweet.content %></li>
-      <li><%= current_user.username %></li>
+
+      <% author_id = tweet.user_id %>
+      <% user_of_tweet = User.find(author_id) %>
+      <% author_of_tweet = user_of_tweet.first_name + ' ' +user_of_tweet.last_name %>
+
+      <li>
+          <a href="/users/<%= tweet.user_id %>">
+          <%= user_of_tweet.username %></a>
+          <b><em><%= author_of_tweet %></em></b>
+
+      </li>
+      <br />
+      <%= tweet.content %>
     <% end %>
   </ul>
 </section>
