@@ -1,5 +1,5 @@
 get '/' do
-  erb :'landing'
+  erb :landing, :layout => false
 end
 
 post '/users/new' do
