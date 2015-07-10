@@ -1,0 +1,35 @@
+<section id="user-info-container">
+  <h5><%= current_user.first_name + ' ' + current_user.last_name%> </h5>
+  <h6><%= current_user.username %></h6>
+
+  <a href="/users/<%= session[:user_id] %>/tweets">
+    <div>
+        <p>Tweets</p>
+        <%= @users_tweets.count %>
+    </div>
+  </a>
+
+  <a href="/users/<%= session[:user_id] %>/following">
+    <div>
+       <p>Following</p>
+       <%= current_user.minions.count %>
+    </div>
+  </a>
+
+  <a href="/users/<%= session[:user_id] %>/followers">
+    <div>
+       <p>Followers</p>
+       <%= current_user.leaders.count %>
+    </div>
+  </a>
+
+</section>
+
+<section id="tweet-container">
+  <ul>
+    <% @user_and_following_tweets.each do |tweet| %>
+      <li><%= tweet.content %></li>
+      <li><%= current_user.username %></li>
+    <% end %>
+  </ul>
+</section>
