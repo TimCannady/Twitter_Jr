@@ -3,6 +3,7 @@ get '/users/:id/tweets' do
   # 'displays all user tweets'
   p 'in get /tweets route'
   @tweets = Tweet.all
+  erb :"tweet/_tweet_list"
 end
 
 
@@ -19,10 +20,10 @@ post '/users/:id/tweets' do
   p params
   p '#' * 50
   @user = User.find_by(id: params[:id])
-  @tweet = Tweet.new(content: params[:content])
+  @tweet = Tweet.new(content: params[:content], user_id: params[:id])
   if @tweet.save
-    p 'this saved!'
-    # redirect "/users/#{@user.id}/tweets"
+    # p 'this saved!'
+    redirect "/users/#{@user.id}/tweets"
   else
     p 'this did not save'
   end
