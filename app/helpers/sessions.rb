@@ -10,7 +10,7 @@ helpers do
   def login
     @user = User.where(email: params[:email]).first
     if @user && @user.password == params[:password]
-      session[:user_id] = params[:user_id]
+      session[:user_id] = @user.id
     end
   end
 
